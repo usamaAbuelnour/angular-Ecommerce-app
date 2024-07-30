@@ -1,14 +1,16 @@
-
 #cart-icon {
   font-size: 1.6rem;
   span {
     font-size: 0.6rem;
   }
-
 }
 
-@media(max-width: 991px) {
+@media (max-width: 991px) {
   li {
     margin-top: 1em;
   }
+}
+
+a {
+  display: inline-block;
 }

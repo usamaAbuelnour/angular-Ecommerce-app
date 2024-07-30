@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../../home/models/product';
 import { NgClass } from '@angular/common';
 import { DiscountPipe } from '../../../../shared/pipes/discount/discount.pipe';
@@ -26,10 +26,12 @@ export class ProductDetailsComponent {
   constructor(
     private fetchProductsService: FetchProductsService,
     private router: ActivatedRoute,
+    private navRouter: Router,
     private addToCartService: AddToCartService
   ) {
     this.productId = this.router.snapshot.params['id'];
   }
+
   ngOnInit() {
     this.fetchProductsService
       .getProductByID(this.productId)
@@ -47,6 +49,16 @@ export class ProductDetailsComponent {
   }
 
   handleAddToCart() {
-    this.addToCartService.setCartCount(this.numOfCartItems + 1);
+    this.navRouter.navigate(['/cart']);
+    this.addToCartService.setCartItems(
+      {
+        image: this.targetProduct.images[0],
+        title: this.targetProduct.title,
+        quantity: 1,
+        price: Number(this.targetProduct.price),
+      },
+      'home',
+      'add'
+    );
   }
 }

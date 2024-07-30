@@ -1,18 +1,29 @@
-<table class="table d-sm-none">
+<table class="table d-sm-none mb-5">
   <tbody>
     @for (item of cartItems; track $index) {
     <app-cart-item [item]="item" />
 
+    }@empty {
+    <h4
+      class="fst-italic py-2 w-75 mx-auto border border-1 rounded-3 my-5 text-center text-danger"
+    >
+      Nothing here!
+    </h4>
     }
   </tbody>
+  @if (cartItems.length) {
+
   <tfoot>
     <td>
-      Total <span>${{ totalPrice }}</span>
+      <span>Total</span> <span>${{ totalPrice }}</span>
     </td>
   </tfoot>
+  }
 </table>
 
-<table class="table text-center d-none d-sm-table">
+<table class="table text-center d-none d-sm-table mb-5">
+  @if (cartItems.length) {
+
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -21,14 +32,24 @@
       <th></th>
     </tr>
   </thead>
+  }
   <tbody>
     @for (item of cartItems; track $index) {
     <app-cart-item [item]="item" />
+    }@empty {
+    <h4
+      class="fst-italic py-2 w-75 mx-auto border border-1 rounded-3 my-5 text-center text-danger"
+    >
+      Nothing here!
+    </h4>
     }
   </tbody>
+  @if (cartItems.length) {
+
   <tfoot>
     <td>
-      Total <span>${{ totalPrice }}</span>
+      <span>Total</span> <span>${{ totalPrice }}</span>
     </td>
   </tfoot>
+  }
 </table>

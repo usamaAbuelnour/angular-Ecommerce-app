@@ -1,5 +1,7 @@
 <nav
   class="navbar navbar-expand-lg bg-body-tertiary position-fixed top-0 start-0 w-100 z-3"
+  data-bs-toggle="collapse"
+  data-bs-target=".navbar-collapse.show"
 >
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="">
@@ -25,20 +27,41 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav fw-semibold ms-auto">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="register">Register</a>
+          <a
+            class="nav-link"
+            aria-current="page"
+            data-bs-toggle="collapse"
+            data-bs-target=".navbar-collapse.show"
+            routerLink="register"
+            routerLinkActive="text-danger"
+            >Register</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="login">Login</a>
+          <a
+            class="nav-link"
+            data-bs-toggle="collapse"
+            data-bs-target=".navbar-collapse.show"
+            routerLink="login"
+            routerLinkActive="text-danger"
+            >Login</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="cart">
+          <a
+            class="nav-link"
+            data-bs-toggle="collapse"
+            data-bs-target=".navbar-collapse.show"
+            routerLink="cart"
+            routerLinkActive="text-danger"
+          >
             <i
               id="cart-icon"
               class="fa-solid fa-cart-shopping position-relative"
             >
               <span
                 class="position-absolute top-0 start-100 translate-middle badge rounded-2 bg-secondary"
-                >{{numOfCartItems}}</span
+                >{{ numOfCartItems }}</span
               >
             </i>
           </a>
