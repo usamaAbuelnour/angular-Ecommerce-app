@@ -1,0 +1,34 @@
+<table class="table d-sm-none">
+  <tbody>
+    @for (item of cartItems; track $index) {
+    <app-cart-item [item]="item" />
+
+    }
+  </tbody>
+  <tfoot>
+    <td>
+      Total <span>${{ totalPrice }}</span>
+    </td>
+  </tfoot>
+</table>
+
+<table class="table text-center d-none d-sm-table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Quality</th>
+      <th scope="col">Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of cartItems; track $index) {
+    <app-cart-item [item]="item" />
+    }
+  </tbody>
+  <tfoot>
+    <td>
+      Total <span>${{ totalPrice }}</span>
+    </td>
+  </tfoot>
+</table>

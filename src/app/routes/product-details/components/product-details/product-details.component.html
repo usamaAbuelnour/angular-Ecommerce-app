@@ -1,0 +1,88 @@
+<div id="product-details" class="container">
+  @if (targetProduct) {
+  <div class="card">
+    <div class="row g-0">
+      <div class="col-md-5">
+        <img
+          [src]="targetProduct.images[0]"
+          class="img-fluid rounded-start"
+          alt="..."
+        />
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+          <h5 class="card-title my-3">{{ targetProduct.title }}</h5>
+          <p class="card-text">
+            {{ targetProduct.description }}
+          </p>
+          <div id="rating" class="text-success">
+            @for (star of ratingStars; track $index) {
+            <i class="fa-solid fa-star"></i>
+            } @if (hasHalfStar) {<i class="fa-solid fa-star-half-stroke"></i>}
+          </div>
+          <p class="card-text"></p>
+
+          <hr />
+          <h5 class="d-flex column-gap-3">
+            <div>
+              <sup>&dollar;</sup><del>{{ price }}</del>
+              <sup
+                ><del>.{{ fraction }}</del></sup
+              >
+            </div>
+            <div class="fw-bolder">
+              <sup>&dollar;</sup
+              >{{ price | discount : targetProduct.discountPercentage
+              }}<sup>.{{ fraction }}</sup>
+            </div>
+          </h5>
+          <p>suggested payments with 6 months special financing</p>
+          <hr />
+
+          <div
+            class="text-bg-success rounded-pill d-inline-block py-1 px-2 fw-medium"
+            [ngClass]="{
+              'text-bg-danger':
+                targetProduct.availabilityStatus === 'Low Stock',
+              'text-bg-success': targetProduct.availabilityStatus === 'In Stock'
+            }"
+          >
+            {{ targetProduct.availabilityStatus }}
+          </div>
+          <div class="my-3">More information</div>
+          <div class="d-flex column-gap-2">
+            <div
+              class="px-3 py-1 rounded-pill"
+              style="background-color: #eaeaea"
+            >
+              {{ targetProduct.category }}
+            </div>
+            <div
+              class="px-3 py-1 rounded-pill"
+              style="background-color: #eaeaea"
+            >
+              {{ targetProduct.brand }}
+            </div>
+          </div>
+          <hr />
+          <div class="d-flex column-gap-2">
+            <button class="btn btn-success rounded-pill">Buy Now</button>
+            <button
+              class="btn btn-outline-success rounded-pill"
+              (click)="handleAddToCart()"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  } @else {
+  <div id="spinner" class="d-flex justify-content-center">
+    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  }
+</div>

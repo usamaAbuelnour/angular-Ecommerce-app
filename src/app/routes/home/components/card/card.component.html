@@ -1,0 +1,44 @@
+<div class="card position-relative h-100" (click)="handleClick($event)">
+  <div id="image">
+    <img
+      class="card-img-top"
+      alt=""
+      [src]="product.images[0]"
+      loading="lazy"
+    />
+  </div>
+
+  <div
+    id="stock"
+    class="rounded-pill position-absolute py-1 px-2"
+    [ngClass]="{
+      'text-bg-danger': product.availabilityStatus === 'Low Stock',
+      'text-bg-success': product.availabilityStatus === 'In Stock'
+    }"
+  >
+    {{ product.availabilityStatus }}
+  </div>
+
+  <div class="card-body d-flex flex-column justify-content-between">
+    <h5 class="card-title fw-bold d-flex justify-content-between">
+      <p>{{ product.title }}</p>
+      <p>
+        <sup>&dollar;</sup>{{ price }}<sup>.{{ fraction }}</sup>
+      </p>
+    </h5>
+    <p class="card-text">
+      {{ product.description }}
+    </p>
+    <div class="d-flex flex-column row-gap-4">
+      <div id="rating" class="text-success">
+        @for (star of ratingStars; track $index) {
+        <i class="fa-solid fa-star"></i>
+        } @if (hasHalfStar) {<i class="fa-solid fa-star-half-stroke"></i>}
+      </div>
+
+      <button id="add-to-cart" class="btn btn-outline-success rounded-pill fw-medium" (click)="handleAddToCart()">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<div id="rows-container" class="d-sm-none">
+  <tr>
+    <th>Name</th>
+
+    <td>
+      <div class="image-title-wrapper">
+        <div class="img-container">
+          <img [src]="item.image" alt="" />
+        </div>
+        <div class="item-description">
+          <p>{{ item.title }}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Quantity</th>
+
+    <td>
+      <div
+        id="quantity"
+        class="btn-group"
+        role="group"
+        aria-label="Basic outlined example"
+      >
+        <button type="button" class="btn btn-outline-secondary fw-bold">
+          -
+        </button>
+        <button type="button" class="btn btn-outline-secondary fw-bold">
+          {{ item.quantity }}
+        </button>
+        <button type="button" class="btn btn-outline-secondary fw-bold">
+          +
+        </button>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Price</th>
+
+    <td class="fw-semibold">${{ item.price }}</td>
+  </tr>
+
+  <tr>
+    <td>
+      <button class="btn btn-danger">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </td>
+  </tr>
+</div>
+
+<tr class="d-none d-sm-grid">
+  <td>
+    <div class="image-title-wrapper">
+      <div class="img-container">
+        <img [src]="item.image" alt="" />
+      </div>
+      <div class="item-description">
+        <p>{{ item.title }}</p>
+      </div>
+    </div>
+  </td>
+
+  <td>
+    <div
+      id="quantity"
+      class="btn-group"
+      role="group"
+      aria-label="Basic outlined example"
+    >
+      <button
+        type="button"
+        class="btn btn-outline-secondary fw-bold"
+        (click)="decreaseQuantity()"
+      >
+        -
+      </button>
+      <button type="button" class="btn btn-outline-secondary fw-bold">
+        {{ item.quantity }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-secondary fw-bold"
+        (click)="increaseQuantity()"
+      >
+        +
+      </button>
+    </div>
+  </td>
+
+  <td class="fw-semibold">${{ item.price }}</td>
+
+  <td>
+    <button class="btn btn-danger" (click)="removeItem()">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </td>
+</tr>

@@ -1,0 +1,120 @@
+<div class="container border border-1 rounded py-4">
+  <form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+      />
+      <div
+        class="form-text text-danger fw-medium"
+        [ngClass]="{
+          visible: name?.touched && name?.invalid,
+          invisible: !name?.touched || !name?.invalid
+        }"
+      >
+        Required
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        formControlName="email"
+      />
+      <div
+        class="form-text text-danger fw-medium"
+        [ngClass]="{
+          visible: email?.touched && email?.invalid,
+          invisible: !email?.touched || !email?.invalid
+        }"
+      >
+        <p>
+          @if (email?.errors?.['required']) { Required } @else {Must be an
+          email}
+        </p>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="userName" class="form-label">User Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="userName"
+        formControlName="userName"
+      />
+      <div
+        class="form-text text-danger fw-medium"
+        [ngClass]="{
+          visible: userName?.touched && userName?.invalid,
+          invisible: !userName?.touched || !userName?.invalid
+        }"
+      >
+        <p>
+          @if (userName?.hasError('required')) { Required } @else {it shoud
+          contain no spaces}
+        </p>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+      />
+      <div
+        class="form-text text-danger fw-medium"
+        [ngClass]="{
+          visible: password?.touched && password?.invalid,
+          invisible: !password?.touched || !password?.invalid
+        }"
+      >
+        <p style="height: 2.2em">
+          @if (password?.hasError('required')) { Required } @else if
+          (password?.hasError('minlength')) {it shoud be 8 character at least}
+          @else {at least one lowercase, one uppercase, one digit and a
+          special character}
+        </p>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="confirmPassword"
+        formControlName="confirmPassword"
+      />
+      <div
+        class="form-text text-danger fw-medium"
+        [ngClass]="{
+          visible: confirmPassword?.touched && confirmPassword?.invalid,
+          invisible: !confirmPassword?.touched || !confirmPassword?.invalid
+        }"
+      >
+        <p>
+          @if (confirmPassword?.hasError('required')) { Required } @else
+          {password mismatch}
+        </p>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="registerForm.invalid"
+    >
+      Register
+    </button>
+  </form>
+</div>
