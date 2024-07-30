@@ -59,10 +59,13 @@
               id="cart-icon"
               class="fa-solid fa-cart-shopping position-relative"
             >
+              @if (numOfCartItems) {
+
               <span
                 class="position-absolute top-0 start-100 translate-middle badge rounded-2 bg-secondary"
                 >{{ numOfCartItems }}</span
               >
+              }
             </i>
           </a>
         </li>
